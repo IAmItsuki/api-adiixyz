@@ -1,6 +1,6 @@
 function getvisitor(){
 var xhr = new XMLHttpRequest();
-var url = 'https://api.countapi.xyz/hit/api-velgrynd.herokuapp.com./visits';
+var url = 'https://api.countapi.xyz/hit/adiixyzapi.herokuapp.com./visits';
 xhr.onloadend = function(){
 data = JSON.parse(this.responseText);
 document.getElementById("visitor").textContent = data.value
