@@ -270,6 +270,22 @@ loghandler = {
             await sleep(3000)
             await fs.unlinkSync(__path + '/database/waifu.png')
         })
+
+        //New features
+        router.get('/removebg', async(req, res) => {
+        var link = req.query.link
+        if (!link) return res.json({ 'message': 'masukan parameter link!'})
+       const data = await getBuffer(`https://rya-kun.herokuapp.com/api/removebg?link=${link}`)
+       await fs.writeFileSync(__path +'/tmp/removebg.png', data)
+       await res.sendFile(__path +'/tmp/removebg.png')
+       })
+       router.get('/ssweb', async(req, res) => {
+       var link = req.query.link
+       if (!link) return res.json({ 'message': 'masukan parameter link!'})
+       const data = await getBuffer(`https://rya-kun.herokuapp.com/api/ssweb?link=${link}`)
+       await fs.writeFileSync(__path +'/tmp/ssweb.png', data)
+       await res.sendFile(__path +'/tmp/ssweb.png')
+})
      
  router.use(function (req, res) {
      res.status(404)
