@@ -286,6 +286,22 @@ loghandler = {
        await fs.writeFileSync(__path +'/tmp/ssweb.png', data)
        await res.sendFile(__path +'/tmp/ssweb.png')
 })
+       router.get('/tinyurl', async(req, res) => {
+	     let url = req.query.url
+	     if (!url) return res.json(loghandler.noturl)
+	     let result = await fetch('https://tinyurl.com/api-create.php?url=${url}')
+	     try {
+	     res.json({
+			  status: 200,
+			  creator: `${creator}`,
+              note: 'Jangan Di Tembak Bang',
+              here: result
+          })
+	    } catch(err) {
+		      console.log(err)
+		      res.json(loghandler.error)
+	       }
+      })
      
  router.use(function (req, res) {
      res.status(404)
