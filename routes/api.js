@@ -289,7 +289,7 @@ loghandler = {
        router.get('/tinyurl', async(req, res) => {
 	     let url = req.query.url
 	     if (!url) return res.json(loghandler.noturl)
-	     let result = await fetch('https://tinyurl.com/api-create.php?url=${url}')
+	     let result = await fetch(`https://tinyurl.com/api-create.php?url=${url}`)
 	     try {
 	     res.json({
 			  status: 200,
